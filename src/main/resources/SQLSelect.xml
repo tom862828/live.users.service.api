@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SelectTable">
+
+	<select id="queryUser" parameterType="com.tom.process.vo.UserVO" resultType="com.tom.process.vo.UserVO">
+		select
+			KEY_NO			as 	  key_no		,
+			USER_NAME		as    user_name		, 
+			USER_PASSWORD	as    user_password	,
+			USER_EMAIL		as    user_email	,
+			ID_NUMBER		as    id_number		,
+			DEPARTMENT		as    department	,
+			ACTIVE  	    as 	  active
+		from DevDb.users
+		where 
+			<if test="user_name != null and user_name !=''">
+			USER_NAME = #{user_name,jdbcType=VARCHAR}
+			</if>
+			<if test="user_password != null and user_password !=''">
+			AND USER_PASSWORD = #{user_password,jdbcType=VARCHAR} 
+			</if>
+			<if test="user_email != null and user_email !=''">
+			AND USER_EMAIL = #{user_email,jdbcType=VARCHAR} 
+			</if>
+			<if test="id_number != null and id_number !=''">
+			AND ID_NUMBER = #{id_number,jdbcType=VARCHAR} 
+			</if>
+			<if test="department != null and department !=''">
+			AND DEPARTMENT = #{department,jdbcType=VARCHAR} 
+			</if>
+			<if test="active != null and active !=''">
+			AND ACTIVE = #{active,jdbcType=VARCHAR} 
+			</if>
+	</select>
+	
+</mapper>

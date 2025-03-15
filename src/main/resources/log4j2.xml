@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+ 	<Properties>
+        <Property name="logPath">D:/log/</Property>
+        <property name="logFileName">webapi.log</property>
+    </Properties>
+ 
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="all" onMatch="ACCEPT" onMismatch="DENY"/>
+			<PatternLayout pattern="%d [%p,%c{1},%t] %m%n" />
+		</Console>
+ 
+		<RollingFile name="RollingFile" filename="${logPath}/${logFileName}"
+		
+			filepattern="${logPath}/$${date:yyyy-MM}/webapi-%d{yyyy-MM-dd}-%i.log">
+            <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY"/>
+			<PatternLayout pattern="%d [%p,%c{1},%t] %m%n" />
+			
+			<Policies>
+				<TimeBasedTriggeringPolicy/>
+				<SizeBasedTriggeringPolicy size="100 MB"/>
+			</Policies>
+			
+		</RollingFile>
+	</Appenders>
+	
+	<Loggers>
+	<logger name="org.springframework" level="debug"></logger>
+	<logger name="org.mybatis" level="debug"></logger>
+	<logger name="org.apache.ibatis.logging.LogFactory" level="debug"></logger>
+		<Root level="debug">
+			<AppenderRef ref="Console"/>
+			<AppenderRef ref="RollingFile" />
+		</Root>
+	</Loggers>
+</Configuration>

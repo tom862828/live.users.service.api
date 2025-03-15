@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="InsertTable">
+
+	<insert id="insertUser" parameterType="com.tom.process.vo.UserVO">
+		insert into DevDb.users(
+			USER_NAME		,
+			USER_PASSWORD	,
+			USER_EMAIL		,
+			ID_NUMBER		,
+			DEPARTMENT		
+		)values(
+			#{user_name,jdbcType=VARCHAR,jdbcType=VARCHAR}		,
+			#{user_password,jdbcType=VARCHAR,jdbcType=VARCHAR}	,
+			#{user_email,jdbcType=VARCHAR,jdbcType=VARCHAR}		,
+			#{id_number,jdbcType=VARCHAR,jdbcType=VARCHAR}		,
+			#{department,jdbcType=VARCHAR,jdbcType=VARCHAR}		
+		)
+	</insert>
+	
+</mapper>

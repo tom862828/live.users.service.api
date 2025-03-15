@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 使用log4j2輸出日誌 -->
+	<settings>
+		<setting name="logImpl" value="LOG4J2" />
+	</settings>
+	
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <!-- 數據庫連接,由mybatis管理-->
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/DevDb?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC&amp;useSSL=false" />
+                <property name="username" value="DevAuth" />
+                <property name="password" value="Dev12345678" />
+            </dataSource>
+        </environment>
+    </environments>
+	<!-- tb_userinfo 資料表配置 -->
+    <mappers>
+    	<mapper resource="SQLInsert.xml"/>
+    	<mapper resource="SQLSelect.xml"/>
+    	<mapper resource="SQLUpdate.xml"/>
+    	<!-- <mapper resource="SQLDelete.xml"/> -->
+    </mappers>
+</configuration>
