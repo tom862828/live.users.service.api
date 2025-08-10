@@ -84,7 +84,7 @@ public class ResultFactory {
 		int row = 0;
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
-			row = sqlSession.update(sqlID, valueObject);
+			row = sqlSession.delete(sqlID, valueObject);
 			sqlSession.commit();
 			return row; 
 		}finally {

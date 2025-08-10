@@ -26,6 +26,6 @@
     	<mapper resource="SQLInsert.xml"/>
     	<mapper resource="SQLSelect.xml"/>
     	<mapper resource="SQLUpdate.xml"/>
-    	<!-- <mapper resource="SQLDelete.xml"/> -->
+    	<mapper resource="SQLDelete.xml"/>
     </mappers>
 </configuration>
